@@ -1,0 +1,183 @@
+<!-- <?php require 'db.php'; ?> -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>投票系統</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{font-family:Arial;padding:20px;background:#f5f5f5}
+.card{background:#fff;padding:20px;margin-bottom:20px;border-radius:10px}
+img{width:120px;height:120px;object-fit:cover}
+button{padding:8px 15px;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.chart-box{height:320px}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h2>新增投票活動</h2>
+<form id="eventForm">
+<input name="title" placeholder="活動名稱" required>
+<input name="creator" placeholder="建立者" required>
+<input name="description" placeholder="說明">
+<button>新增活動</button>
+</form>
+</div>
+
+<div id="events"></div>
+<div id="resultArea"></div>
+
+<script>
+// 前端 JS：呼叫 JSON API 並在客戶端渲染（中文註解）
+const chartInstances = {};
+
+// 啟動時載入活動列表
+loadEvents();
+
+async function loadEvents(){
+    const res = await fetch('get_events.php');
+    const data = await res.json();
+    renderEvents(data.events || []);
+}
+
+// 將活動資料渲染到頁面
+function renderEvents(events){
+    const container = document.getElementById('events');
+    container.innerHTML = '';
+    events.forEach(e => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        let html = `<h2>${escapeHtml(e.title)}</h2>`;
+        html += `<p>建立者：${escapeHtml(e.creator)}</p>`;
+        html += `<p>${escapeHtml(e.description || '')}</p>`;
+        html += `<h3>新增投票項目</h3>`;
+        html += `<form id="itemForm${e.id}" enctype="multipart/form-data" onsubmit="event.preventDefault(); addItem(${e.id});">`;
+        html += `<input name="name" placeholder="項目名稱" required>`;
+        html += `<input name="description" placeholder="項目說明">`;
+        html += `<input type="file" name="image">`;
+        html += `<button type="submit">新增項目</button>`;
+        html += `</form>`;
+        html += `<p><button type="button" onclick="loadResult(${e.id})">查看結果</button></p>`;
+        html += `<hr>`;
+
+        e.items.forEach(d => {
+            html += `<div>`;
+            html += `<h4>${escapeHtml(d.name)}</h4>`;
+            html += `<p>${escapeHtml(d.description || '')}</p>`;
+            if (d.image) html += `<img src="${escapeHtml(d.image)}">`;
+            html += `<p>票數：${d.total}</p>`;
+            html += `<button onclick="vote(${e.id},${d.id})">投票</button>`;
+            html += `</div><hr>`;
+        });
+
+        html += `</div>`;
+        div.innerHTML = html;
+        container.appendChild(div);
+    });
+}
+
+// 取得單一活動結果並繪製圖表
+async function loadResult(eventId){
+    const res = await fetch('result.php?event_id=' + encodeURIComponent(eventId));
+    const json = await res.json();
+    if(!json.success){
+        alert(json.message || '取得結果失敗');
+        return;
+    }
+
+    const area = document.getElementById('resultArea');
+    area.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<h2>投票結果</h2><p><a href="#" onclick="document.getElementById('resultArea').innerHTML=''; return false;">關閉結果</a></p>`;
+    area.appendChild(card);
+
+    const info = document.createElement('div');
+    info.className = 'card';
+    let infoHtml = `<h2>${escapeHtml(json.event.title)}</h2>`;
+    infoHtml += `<p>建立者：${escapeHtml(json.event.creator)}</p>`;
+    infoHtml += `<p>${escapeHtml(json.event.description || '')}</p>`;
+    infoHtml += `<div class="grid"><div class="chart-box"><canvas id="bar${json.event.id}"></canvas></div><div class="chart-box"><canvas id="pie${json.event.id}"></canvas></div></div>`;
+    info.innerHTML = infoHtml;
+    area.appendChild(info);
+
+    const labels = json.labels || [];
+    const totals = json.totals || [];
+
+    // 清除舊圖表
+    ['bar','pie'].forEach(type => {
+        const id = type + json.event.id;
+        if (chartInstances[id]) chartInstances[id].destroy();
+    });
+
+    const barCtx = document.getElementById('bar' + json.event.id).getContext('2d');
+    chartInstances['bar' + json.event.id] = new Chart(barCtx, {
+        type: 'bar',
+        data: { labels, datasets: [{ label: '票數', data: totals, backgroundColor: '#4e79a7' }] },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+    });
+
+    const pieCtx = document.getElementById('pie' + json.event.id).getContext('2d');
+    chartInstances['pie' + json.event.id] = new Chart(pieCtx, {
+        type: 'pie',
+        data: { labels, datasets: [{ data: totals, backgroundColor: ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f','#edc949','#af7aa1','#ff9da7'] }] },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    window.scrollTo({ top: area.offsetTop - 20, behavior: 'smooth' });
+}
+
+// 新增活動
+document.getElementById('eventForm').onsubmit = async e => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const res = await fetch('add_event.php', { method: 'POST', body: fd });
+    const json = await res.json();
+    if (json.success) {
+        e.target.reset();
+        loadEvents();
+    } else {
+        alert(json.message || '新增活動失敗');
+    }
+}
+
+// 新增項目，會上傳檔案
+async function addItem(id){
+    const form = document.getElementById('itemForm' + id);
+    const fd = new FormData(form);
+    fd.append('event_id', id);
+    const res = await fetch('add_item.php', { method: 'POST', body: fd });
+    const json = await res.json();
+    if (json.success) {
+        form.reset();
+        loadEvents();
+    } else {
+        alert(json.message || '新增項目失敗');
+    }
+}
+
+// 投票
+async function vote(eventId, itemId){
+    const voter = prompt('請輸入名稱');
+    if (!voter) return;
+    const fd = new FormData();
+    fd.append('event_id', eventId);
+    fd.append('item_id', itemId);
+    fd.append('voter_name', voter);
+    const res = await fetch('vote.php', { method: 'POST', body: fd });
+    const json = await res.json();
+    alert(json.message || (json.success ? '投票成功' : '投票失敗'));
+    loadEvents();
+}
+
+// 簡單的 HTML escape 函式，避免 XSS
+function escapeHtml(str){
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+}
+</script>
+
+</body>
+</html>
