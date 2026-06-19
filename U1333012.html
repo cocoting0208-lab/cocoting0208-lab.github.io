@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>丁可淳 個人網站</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(53, 88, 130, 0.651);
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .skill-title {
+            font-weight: bold;
+        }
+
+        .activity-img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        footer {
+            background: #212529;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .carousel-img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .source-link {
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+        }
+
+        .tech-badge {
+            margin: 3px;
+        }
+
+        .article-img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .project-carousel-img {
+            height: 450px;
+            object-fit: contain;
+            background: #f8f9fa;
+        }
+        .carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 20px;
+    background-size: 60% 60%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 8%;
+    filter: drop-shadow(0 0 6px rgba(0,0,0,0.8));
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+
+        <div class="container">
+            <a class="navbar-brand justify-content-start" href="#">
+                <img src="images/logo.jpg" width="40" height="40" class="rounded-circle">
+                丁可淳
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbar">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">首頁</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">關於我</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">教育背景</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">技能</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">經驗</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">作品</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#articles">文章</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#awards">榮譽</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#photos">活動照片</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">聯絡我</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁 -->
+    <section id="home" class="hero">
+
+        <div>
+
+            <h1 class="fw-bold">丁可淳</h1>
+
+            <h3>國立聯合大學資訊管理學系</h3>
+
+            <p class="lead">
+                程式設計、網頁開發與資訊系統開發
+            </p>
+        </div>
+
+    </section>
+
+    <!-- 關於我 -->
+    <section id="about">
+        <div class="container">
+
+            <h2 class="text-center mb-5 fw-bold">
+                關於我
+            </h2>
+            <div class="row align-items-center">
+
+                <div class="col-md-4 text-center">
+
+                    <img src="images/i.png" class="profile-img shadow">
+
+                </div>
+                <div class="col-md-8">
+
+                    <h3 class="fw-bold mb-4">
+                        自我介紹
+                    </h3>
+
+                    <ul class="list-group list-group-flush shadow-sm">
+
+                        <li class="list-group-item">
+                            <strong>姓名：</strong>
+                            丁可淳
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>就讀學校：</strong>
+                            國立聯合大學
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>科系：</strong>
+                            資訊管理學系
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>年級：</strong>
+                            二年級
+                        </li>
+                        <li class="list-group-item">
+                            <strong>學習技能：</strong>
+                            C++、HTML、CSS、Bootstrap、PHP、MySQL、JavaScript
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>專案經驗：</strong>
+                            圖書館管理系統、AJAX投票系統、購物網站系統
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>未來目標：</strong>
+                            成為全端工程師或系統分析師，持續精進軟體開發與資訊系統設計能力
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>興趣：</strong>
+                            閱讀小說、觀看動畫、韓劇
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>個人特質：</strong>
+                            樂於學習、善於解決問題、重視團隊合作、具備責任感
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- 教育背景 -->
+    <section id="education" class="bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">
+                教育背景
+            </h2>
+            <div class="card shadow p-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h5 class="fw-bold mb-1">
+                            2018 ~ 2021 私立揚子高級中學 國中部
+                        </h5>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="fw-bold mb-1">
+                            2021 ~ 2024 私立揚子高級中學 高中部
+                        </h5>
+                    </li>
+                    <li class="list-group-item">
+                        <h5 class="fw-bold mb-1">
+                            2024 ~ 至今 國立聯合大學 資訊管理學系
+                        </h5>
+                        <div class="mt-3">
+                            <strong>重要課程：</strong>
+                            <ul>
+                                <li>程式設計(C++)</li>
+                                <li>資料結構</li>
+                                <li>資料庫管理系統</li>
+                                <li>網頁程式設計</li>
+                                <li>網路程式設計</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- 技能 -->
+    <section id="skills" class="bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">
+                專業技能
+            </h2>
+            <div class="mb-3">
+                <div class="skill-title">C++</div>
+                <div class="progress">
+                    <div class="progress-bar" style="width:85%">85%</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="skill-title">HTML/CSS</div>
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width:80%">80%</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="skill-title">PHP</div>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" style="width:75%">75%</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="skill-title">MySQL</div>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" style="width:80%">80%</div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- 經驗 -->
+    <section id="experience">
+
+        <div class="container">
+
+            <h2 class="text-center mb-5 fw-bold">
+                經驗與實習
+            </h2>
+
+            <div class="card shadow p-4">
+
+                <h4>課程專案開發經驗</h4>
+
+                <ul>
+                    <li>PHP購物網站系統</li>
+                    <li>AJAX投票系統</li>
+                    <li>圖書館管理系統(C++)</li>
+                    <li>Laravel API 開發練習</li>
+                </ul>
+                <p>
+                    透過課程專案培養程式設計、資料庫、
+                    前後端開發等專業能力。
+                </p>
+                <h4>課外活動</h4>
+                <ul>
+                    <li>扶青社社團活動</li>
+                    <li>偏鄉數位學伴</li>
+                </ul>
+                <p>
+                    參與社團與志工活動，培養團隊合作、溝通協調與社會責任感。
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 作品集 -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">
+                專案作品
+            </h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow h-100">
+                        <img src="images/作品1.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5>圖書館管理系統</h5>
+                            <p> C++ 物件導向程式設計 </p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#libraryModal"> 查看詳情
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="images/作品2.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5>AJAX投票系統</h5>
+                            <p>PHP + MySQL + Chart.js</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#voteModal"> 查看詳情
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="images/作品3.png" class="card-img-top">
+                        <div class="card-body">
+                            <h5>購物網站</h5>
+                            <p>PHP + MySQL 電商系統</p>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shoppingModal"> 查看詳情
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 圖書館管理系統 Modal -->
+            <div class="modal fade" id="libraryModal" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">圖書館管理系統</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="libraryCarousel" class="carousel slide mb-4">
+
+                                <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+                                        <img src="images/作品1.jpg" class="d-block w-100 project-carousel-img">
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>系統主畫面與功能選單。</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="images/作品1-1.jpg" class="d-block w-100 project-carousel-img">
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>借、還書功能程式碼與執行畫面。</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <video controls class="d-block w-100 project-carousel-img">
+                                            <source src="images/作品1-2.mp4" type="video/mp4">
+                                            您的瀏覽器不支援影片播放。
+                                        </video>
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>程式碼。</p>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <button class="carousel-control-prev" type="button" data-bs-target="#libraryCarousel"
+                                    data-bs-slide="prev">
+
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+
+                                <button class="carousel-control-next" type="button" data-bs-target="#libraryCarousel"
+                                    data-bs-slide="next">
+
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+
+                            <h5>專案介紹</h5>
+                            <p>
+                                本系統以 C++ 開發，模擬圖書館借閱管理流程，
+                                提供圖書新增、刪除、查詢以及借閱功能。
+                            </p>
+
+                            <h5>技術細節</h5>
+                            <ul>
+                                <li>物件導向程式設計(OOP)</li>
+                                <li>繼承(Inheritance)</li>
+                                <li>多型(Polymorphism)</li>
+                                <li>例外處理(Exception Handling)</li>
+                                <li>STL 容器應用</li>
+                            </ul>
+
+                            <h5>開發成果</h5>
+                            <p>
+                                成功建立完整圖書管理流程，並透過類別設計提升程式可維護性。
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- AJAX投票系統 Modal -->
+            <div class="modal fade" id="voteModal" tabindex="-1">
+
+                <div class="modal-dialog modal-lg">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                AJAX投票系統
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="voteCarousel" class="carousel slide mb-4">
+
+                                <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+                                        <img src="images/作品2.jpg" class="d-block w-100 project-carousel-img">
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>系統主畫面。</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <video controls class="d-block w-100 project-carousel-img">
+                                            <source src="images/作品2-1.mp4" type="video/mp4">
+                                            您的瀏覽器不支援影片播放。
+                                        </video>
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>投票執行畫面與統計圖顯示。</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <video controls class="d-block w-100 project-carousel-img">
+                                            <source src="images/作品2-2.mp4" type="video/mp4">
+                                            您的瀏覽器不支援影片播放。
+                                        </video>
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>程式碼。</p>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <button class="carousel-control-prev" type="button" data-bs-target="#voteCarousel"
+                                    data-bs-slide="prev">
+
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+
+                                <button class="carousel-control-next" type="button" data-bs-target="#voteCarousel"
+                                    data-bs-slide="next">
+
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+
+                            <h5>專案介紹</h5>
+                            <p>
+                                本系統以 PHP 開發，
+                                模擬 AJAX 投票流程，
+                                提供投票、統計以及管理功能。
+                            </p>
+                            <h5>技術細節</h5>
+                            <ul>
+
+                                <li>AJAX</li>
+
+                                <li>PHP 後端處理</li>
+
+                                <li>MySQL 資料庫</li>
+
+                                <li>Chart.js 圖表呈現</li>
+
+                                <li>Fetch API</li>
+                            </ul>
+                            <h5>開發成果</h5>
+                            <p>
+                                完成多人投票與即時統計功能。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 購物網站 Modal -->
+            <div class="modal fade" id="shoppingModal" tabindex="-1">
+
+                <div class="modal-dialog modal-lg">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                購物網站
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="shoppingCarousel" class="carousel slide mb-4">
+
+                                <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+                                        <img src="images/作品3.png" class="d-block w-100 project-carousel-img">
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>商品管理頁面。</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <video controls class="d-block w-100 project-carousel-img">
+                                            <source src="images/作品3-1.mp4" type="video/mp4">
+                                            您的瀏覽器不支援影片播放。
+                                        </video>
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>系統操作演示。</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <video controls class="d-block w-100 project-carousel-img">
+                                            <source src="images/作品3-2.mp4" type="video/mp4">
+                                            您的瀏覽器不支援影片播放。
+                                        </video>
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>程式碼。</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="images/作品3-3.jpg" class="d-block w-100 project-carousel-img">
+                                        <div class="carousel-caption bg-dark bg-opacity-50 rounded d-inline-block p-2"style="font-size: 20px;">
+                                            <p>系統架構與流程。</p>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <button class="carousel-control-prev" type="button" data-bs-target="#shoppingCarousel"
+                                    data-bs-slide="prev">
+
+                                    <span class="carousel-control-prev-icon"></span>
+                                </button>
+
+                                <button class="carousel-control-next" type="button" data-bs-target="#shoppingCarousel"
+                                    data-bs-slide="next">
+
+                                    <span class="carousel-control-next-icon"></span>
+                                </button>
+                            </div>
+
+                            <h5>專案介紹</h5>
+                            <p>
+                                本系統以 PHP 開發，
+                                模擬電商購物流程，提供商品瀏覽包含會員登入、
+                                商品管理、購物車與訂單管理、下單結帳等功能。
+                            </p>
+                            <h5>技術細節</h5>
+                            <ul>
+
+                                <li>PHP</li>
+
+                                <li>MySQL</li>
+
+                                <li>多型(Polymorphism)</li>
+
+                                <li>Bootstrap</li>
+
+                                <li>Bootstrap</li>
+                            </ul>
+                            <h5>開發成果</h5>
+                            <p>
+                                完成前後台整合，實作完整購物流程。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章 -->
+    <section id="articles" class="bg-light">
+
+        <div class="container">
+
+            <h2 class="text-center mb-5 fw-bold">
+                文章分享
+            </h2>
+
+            <div class="card shadow p-4">
+
+                <h4 class="fw-bold">軟體工程的再定義：生成式 AI 如何改變研發團隊的架構決策與知識管理</h4>
+                <h6>超智諮詢 Meta Intelligence | 2025年9月12日</h6>
+                <p>
+                    生成式 AI 是一個強大的工具，它正在以前所未有的速度消除附帶複雜性，但本質複雜性——理解需求、設計架構、做出正確的工程判斷——依然是人類不可替代的領域。
+                    真正重要的不是「用不用 AI 寫程式」，而是企業是否有能力在 AI 的協助下，重新審視架構決策、重新定義團隊角色、重新思考知識管理的方式。
+                </p>
+                <a href="https://www.meta-intelligence.tech/insight-ai-dev-paradigm" target="_blank"
+                    class="btn btn-primary">閱讀更多</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 獲獎 -->
+    <section id="awards">
+
+        <div class="container">
+
+            <h2 class="text-center mb-5 fw-bold">
+                獲獎與榮譽
+            </h2>
+            <p>
+                尚未有獲獎與榮譽。
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- 活動照片 -->
+    <section id="photos" class="bg-light">
+
+        <div class="container">
+
+            <h2 class="text-center mb-5 fw-bold">
+                參與活動照片
+            </h2>
+
+            <div id="activityCarousel" class="carousel slide shadow" data-bs-ride="carousel">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+
+                        <img src="images/過程.jpg" class="d-block w-100 carousel-img">
+
+                        <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+
+                            <h5>
+                                數位學伴上課過程
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <div class="carousel-item">
+
+                        <img src="images/證明.JPG" class="d-block w-100 carousel-img">
+
+                        <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+
+                            <h5>
+                                領取36小時服務證明
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <div class="carousel-item">
+
+                        <img src="images/證明1.jpg" class="d-block w-100 carousel-img">
+
+                        <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+
+                            <h5>
+                                社團活動合照
+                            </h5>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#activityCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#activityCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- 聯絡 -->
+    <section id="contact">
+        <div class="container text-center">
+            <h2 class="fw-bold">聯絡我</h2>
+            <p>Email：U1333012@o365.nuu.edu.tw</p>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 丁可淳 All Rights Reserved
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
